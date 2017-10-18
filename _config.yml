@@ -80,3 +80,5 @@ deploy:
   type: git
   repo: git@github.com:790013438/blog.git
   branch: gh-pages
+
+avatar: https://avatars3.githubusercontent.com/u/21995328?s=460&v=4
