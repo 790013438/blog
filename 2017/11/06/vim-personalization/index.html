@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="configuration files 三个配置文件  vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the hom">
+<meta name="description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim_personalization">
 <meta property="og:url" content="https://790013438.github.io/blog/2017/11/06/vim-personalization/index.html">
 <meta property="og:site_name" content="Floyd">
-<meta property="og:description" content="configuration files 三个配置文件  vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the hom">
+<meta property="og:description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-06T07:56:01.939Z">
+<meta property="og:updated_time" content="2017-11-12T05:11:54.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim_personalization">
-<meta name="twitter:description" content="configuration files 三个配置文件  vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the hom">
+<meta name="twitter:description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
 
 
 
@@ -329,9 +329,7 @@
       
 
       
-        <h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><ul>
-<li><p>三个配置文件</p>
-<ul>
+        <h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><h3 id="三个配置文件"><a href="#三个配置文件" class="headerlink" title="三个配置文件"></a>三个配置文件</h3><ul>
 <li><p>vimrc</p>
 <ul>
 <li><p>The global vimrc file is placed in the folder where all of your Vim system files are installed.</p>
@@ -358,8 +356,28 @@
 </li>
 </ul>
 </li>
-<li>exrc</li>
+<li>exrc<ul>
+<li>The exrc file is a configuration file that is only used for backwards compatibility with the old vi /ex editor.<blockquote>
+<p>用的很少，要兼容时才用<br>Changing the fonts</p>
+</blockquote>
+</li>
 </ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>字体<br>一般来说，由于Vim的字体是由终端决定的，因此不太可能更改。然而，在Gvim中，你可以随心所欲地改变字体。</p>
+<ul>
+<li>The main command for changing the font in Linux is:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>For changing the font in Windows, use the following command:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
+</li>
+<li><p>If you are not sure about whether a particular font is available on the computer or not, you can add another font at the end of the command by add a comma between the two fonts.For example:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -395,6 +413,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="../../07/oracle查询/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -471,7 +493,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="../../../../archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -519,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configuration-files"><span class="nav-number">1.</span> <span class="nav-text">configuration files</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configuration-files"><span class="nav-number">1.</span> <span class="nav-text">configuration files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个配置文件"><span class="nav-number">1.1.</span> <span class="nav-text">三个配置文件</span></a></li></ol></li></ol></div>
             
 
           </div>

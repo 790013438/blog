@@ -263,6 +263,386 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/11/12/面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蝉鸣Floyd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Floyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2017/11/12/面试题/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T13:10:42+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="两个线程相加，一个计算1到一万，一计算一万到两万"><a href="#两个线程相加，一个计算1到一万，一计算一万到两万" class="headerlink" title="两个线程相加，一个计算1到一万，一计算一万到两万"></a>两个线程相加，一个计算1到一万，一计算一万到两万</h2><ul>
+<li><p>Runnable</p>
+<ul>
+<li>进程和线程有什么区别和联系<ul>
+<li>进程是操作系统分配内存的基本单元</li>
+<li>线程是分配CPU的基本单元</li>
+</ul>
+</li>
+<li>两个进程共享数据-共享内存<ul>
+<li>管道</li>
+<li>套接字</li>
+</ul>
+</li>
+<li><p>两个线程共享数据</p>
+<ul>
+<li>共享一个对象</li>
+<li>共享上下文</li>
+<li>用内部类共享外部类的数据</li>
+<li>管道流(PipedInputStream/PipedOutputStream)<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">//atom branch</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger sum = <span class="keyword">new</span> AtomicInteger();</div><div class="line">  <span class="comment">//        private static int sum;</span></div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> begin;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.begin = begin;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; ++i) &#123;</div><div class="line">                sum += i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        t1.start();</div><div class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(<span class="number">10000</span>, <span class="number">20000</span>));</div><div class="line">        t2.start();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            t1.join();</div><div class="line">            t2.join();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        System.out.println(sum);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>使用线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> start;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.start = start;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; ++i) &#123;</div><div class="line">                sum += i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger sum = <span class="keyword">new</span> AtomicInteger();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        service.execute(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        service.execute(<span class="keyword">new</span> AddThread(<span class="number">10001</span>, <span class="number">20000</span>));</div><div class="line">        Service.shutdown();</div><div class="line">        <span class="keyword">while</span> (!service.isTerninated()) &#123; &#125;</div><div class="line">        System.out.println(sum);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>使用Callable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> Integer sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> begin;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.begin = begin;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; ++i) &#123;</div><div class="line">                sum.addAndGet(i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> sum;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Future&lt;Integer&gt; f1 = service.submit(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        Future&lt;Integer&gt; f2 = service.submit(<span class="keyword">new</span> AddThread(<span class="number">1001</span>, <span class="number">20000</span>));</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">int</span> num1 = f1.get();</div><div class="line">            <span class="keyword">int</span> num2 = f2.get();</div><div class="line">            System.out.println(num1 + num2);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>java7 fork join</p>
+<blockquote>
+<p>排序，没有相关性的东西<br>Collections.sort –&gt; java7 之前 Double pivot quick sort, Java 7+ 后TimSort<br>JMM – Java memory model</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/11/07/oracle查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蝉鸣Floyd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Floyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2017/11/07/oracle查询/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-07T15:44:06+08:00">
+                2017-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>配置和移植工具<br>监听程序配置<br>删除</p>
+<p>添加<br>tcp<br>默认<br>配一个监听</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> emp <span class="keyword">where</span> sal <span class="keyword">in</span> (<span class="keyword">select</span> sal <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt;= <span class="keyword">max</span>(sal))</div></pre></td></tr></table></figure>
+<ul>
+<li><p>查询最大的月薪</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> emp <span class="keyword">where</span> sal =(<span class="keyword">select</span> <span class="keyword">max</span>(sal) <span class="keyword">from</span> emp <span class="keyword">where</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询年薪和补贴</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span>, (sal+nvl(comm,<span class="number">0</span>))*<span class="number">16</span> <span class="keyword">from</span> emp</div></pre></td></tr></table></figure>
+<ul>
+<li>降序配列<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, (sal+nvl(comm,<span class="number">0</span>))*<span class="number">16</span> <span class="keyword">as</span> total <span class="keyword">from</span> emp <span class="keyword">order</span> <span class="keyword">by</span> total <span class="keyword">desc</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>查询每位员工的姓名和年薪(10部门13薪，20部门16薪，其他12薪)</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> emp <span class="keyword">where</span> </div><div class="line"><span class="keyword">select</span> deptno <span class="keyword">from</span> emp</div></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> deptno, <span class="keyword">count</span>(deptno) <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> depton;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>正确版</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno) <span class="keyword">as</span> total <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptno) t1 </div><div class="line"><span class="keyword">inner</span> <span class="keyword">join</span> dept <span class="number">12</span> <span class="keyword">on</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询超过4个人的部门名称和人数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno) <span class="keyword">as</span> total <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptno) <span class="keyword">having</span> <span class="keyword">count</span>(deptno) &gt; <span class="number">4</span> t1</div><div class="line"><span class="keyword">inner</span> <span class="keyword">join</span> dept <span class="number">12</span> <span class="keyword">on</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询所有部门的名称和人数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,nvl(total,<span class="number">0</span>) <span class="keyword">as</span> total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno) <span class="keyword">as</span> total <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptno)  t1</div><div class="line"><span class="keyword">right</span> <span class="keyword">out</span> <span class="keyword">join</span> dept t2 <span class="keyword">on</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>右外连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,nvl(total,<span class="number">0</span>) <span class="keyword">as</span> total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno)<span class="keyword">as</span> total <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno)t1, dept t2 </div><div class="line"><span class="keyword">where</span> t1.deptno(+)=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>全连接，笛卡尔积</p>
+<blockquote>
+<p>用的比较少</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.*, t2.* <span class="keyword">from</span> dept t1, emp t2;</div></pre></td></tr></table></figure>
+<p>相当左外连接</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.*, t2.* <span class="keyword">from</span> dept t1, emp t2;</div><div class="line">where t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+<p>相当圈外谅解</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.dname, t2.ename <span class="keyword">from</span> dept t1 <span class="keyword">full</span> <span class="keyword">join</span> emp t2 <span class="keyword">on</span> <span class="number">1</span>=<span class="number">1</span>;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>自然连接（用外键连接）</p>
+<blockquote>
+<p>右表越小越好</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.*, t2.* <span class="keyword">from</span> emp t1, dept t2 <span class="keyword">where</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">natural</span> <span class="keyword">join</span> dept;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询薪水最高的前5名雇员</p>
+<blockquote>
+<p>rownum 伪列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">rownum</span>, ename, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> ename, sal <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 <span class="keyword">where</span> <span class="keyword">rownum</span> &lt;= <span class="number">5</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>查询薪水排在第6-10名雇员</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span></div><div class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> <span class="keyword">as</span> rn, t1.* <span class="keyword">from</span></div><div class="line">(<span class="keyword">select</span> ename, sal <span class="keyword">from</span> emp</div><div class="line"><span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 ) t2</div><div class="line"><span class="keyword">where</span> rn <span class="keyword">between</span> <span class="number">6</span> <span class="keyword">and</span> <span class="number">10</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询月薪排名前5的员工姓名和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> <span class="keyword">as</span> rn, ename, sal </div><div class="line"><span class="keyword">from</span> (<span class="keyword">select</span> ename, sal <span class="keyword">from</span> Emp <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 ) t2</div><div class="line"><span class="keyword">where</span> rn &lt;= <span class="number">5</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>查询月薪排名前5的员工姓名和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> <span class="keyword">as</span> rn, ename, sal </div><div class="line"><span class="keyword">from</span> (<span class="keyword">select</span> ename, sal <span class="keyword">from</span> Emp <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 ) t2</div><div class="line"><span class="keyword">where</span> rn <span class="keyword">between</span> <span class="number">4</span> <span class="keyword">and</span> <span class="number">8</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询薪水超过平均薪水的员工的姓名和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span> Emp </div><div class="line"><span class="keyword">where</span> sal&gt;(<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> Emp)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>补平均工资的列 </p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal,(<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> Empa) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp </div><div class="line"><span class="keyword">where</span> sal&gt;(<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> Emp)</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>查询薪水超过其所在部门平均薪水的员工的姓名，部门编号和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, t1.deptno, sal, avgSal <span class="keyword">from</span> Emp t1 <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t2</div><div class="line"><span class="keyword">on</span> t1.deptno=t2.deptno <span class="keyword">and</span> sal&gt;avgSal</div></pre></td></tr></table></figure>
+<ul>
+<li><p>查询薪水超过其所在部门平均薪水的员工的姓名，部门名称和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, dname, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> ename, t1.deptno, sal <span class="keyword">from</span> Emp t1 <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t2</div><div class="line"><span class="keyword">on</span> t1.deptno=t2.deptno <span class="keyword">and</span> sal&gt;avgSal) t3 <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">Dept t4 <span class="keyword">on</span> t3.deptno=t4.deptno;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>小表放后，做驱动表</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>查询主管的姓名和职位</p>
+<ul>
+<li>查询主管的编号</li>
+<li><p>去重<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```sql</div><div class="line">select ename, job from Emp </div><div class="line">where empno in (select distinct mgr from Emp where mgr is not null);</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>去重,一般使用exists / no exists 去重<br>o   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="string">'x'</span> <span class="keyword">from</span> Emp</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查询有没有</p>
+</blockquote>
+</li>
+<li>查询主管 更好的写法<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename,job <span class="keyword">from</span> Emp t1 </div><div class="line"><span class="keyword">where</span> <span class="keyword">exists</span> (<span class="keyword">select</span> <span class="string">'x'</span> <span class="keyword">from</span> Emp t2 <span class="keyword">where</span> t1.empno = t2.mgr)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>平均薪水最高的部门的名称和平均工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname, avgSal <span class="keyword">from</span> Dept t3</div><div class="line"><span class="keyword">inner</span> <span class="keyword">join</span> </div><div class="line">(<span class="keyword">select</span> t2.deptno, avgSal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t2</div><div class="line"><span class="keyword">where</span> avgSal=</div><div class="line">(<span class="keyword">select</span> <span class="keyword">max</span>(avgSal) <span class="keyword">as</span> maxSal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t1)) t4</div><div class="line"><span class="keyword">on</span> t4.deptno=t3.deptno;</div></pre></td></tr></table></figure>
+<ul>
+<li>having, 更简单的<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname, avgSal <span class="keyword">from</span> </div><div class="line">    (<span class="keyword">select</span> deptno, avgSal <span class="keyword">from</span> </div><div class="line">        (<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal)<span class="keyword">as</span> avgSal </div><div class="line">            <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno</div><div class="line">            <span class="keyword">having</span> <span class="keyword">avg</span>(sal)=(</div><div class="line">                <span class="keyword">select</span> <span class="keyword">max</span>(avgSal) <span class="keyword">as</span> maxSal <span class="keyword">from</span> </div><div class="line">                (<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t1</div><div class="line">            )) t2 </div><div class="line">        <span class="keyword">inner</span> <span class="keyword">join</span> Dept t3 </div><div class="line">        <span class="keyword">on</span> t2.deptno=t3.deptno</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/11/06/vim-personalization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,9 +714,7 @@
       
         
           
-            <h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><ul>
-<li><p>三个配置文件</p>
-<ul>
+            <h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><h3 id="三个配置文件"><a href="#三个配置文件" class="headerlink" title="三个配置文件"></a>三个配置文件</h3><ul>
 <li><p>vimrc</p>
 <ul>
 <li><p>The global vimrc file is placed in the folder where all of your Vim system files are installed.</p>
@@ -363,8 +741,28 @@
 </li>
 </ul>
 </li>
-<li>exrc</li>
+<li>exrc<ul>
+<li>The exrc file is a configuration file that is only used for backwards compatibility with the old vi /ex editor.<blockquote>
+<p>用的很少，要兼容时才用<br>Changing the fonts</p>
+</blockquote>
+</li>
 </ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>字体<br>一般来说，由于Vim的字体是由终端决定的，因此不太可能更改。然而，在Gvim中，你可以随心所欲地改变字体。</p>
+<ul>
+<li>The main command for changing the font in Linux is:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>For changing the font in Windows, use the following command:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
+</li>
+<li><p>If you are not sure about whether a particular font is available on the computer or not, you can add another font at the end of the command by add a comma between the two fonts.For example:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -943,7 +1341,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

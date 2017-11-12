@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="../../../../lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="../../../../css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="配置和移植工具监听程序配置删除 添加tcp默认配一个监听 1select name from emp where sal in (select sal from emp where sal &amp;gt;= max(sal))  查询最大的月薪   1select name from emp where sal =(select max(sal) from emp where)  查询年薪和补贴   1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Floyd">
+<meta property="og:url" content="https://790013438.github.io/blog/2017/11/07/oracle查询/index.html">
+<meta property="og:site_name" content="Floyd">
+<meta property="og:description" content="配置和移植工具监听程序配置删除 添加tcp默认配一个监听 1select name from emp where sal in (select sal from emp where sal &amp;gt;= max(sal))  查询最大的月薪   1select name from emp where sal =(select max(sal) from emp where)  查询年薪和补贴   1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-07T07:44:06.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Floyd">
+<meta name="twitter:description" content="配置和移植工具监听程序配置删除 添加tcp默认配一个监听 1select name from emp where sal in (select sal from emp where sal &amp;gt;= max(sal))  查询最大的月薪   1select name from emp where sal =(select max(sal) from emp where)  查询年薪和补贴   1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://790013438.github.io/blog/2017/11/07/oracle查询/"/>
+
+
+
+
+
+  <title> | Floyd</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Floyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">花开花落， 云卷云舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蝉鸣Floyd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Floyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-07T15:44:06+08:00">
+                2017-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>配置和移植工具<br>监听程序配置<br>删除</p>
+<p>添加<br>tcp<br>默认<br>配一个监听</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> emp <span class="keyword">where</span> sal <span class="keyword">in</span> (<span class="keyword">select</span> sal <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt;= <span class="keyword">max</span>(sal))</div></pre></td></tr></table></figure>
+<ul>
+<li><p>查询最大的月薪</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> emp <span class="keyword">where</span> sal =(<span class="keyword">select</span> <span class="keyword">max</span>(sal) <span class="keyword">from</span> emp <span class="keyword">where</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询年薪和补贴</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span>, (sal+nvl(comm,<span class="number">0</span>))*<span class="number">16</span> <span class="keyword">from</span> emp</div></pre></td></tr></table></figure>
+<ul>
+<li>降序配列<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, (sal+nvl(comm,<span class="number">0</span>))*<span class="number">16</span> <span class="keyword">as</span> total <span class="keyword">from</span> emp <span class="keyword">order</span> <span class="keyword">by</span> total <span class="keyword">desc</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>查询每位员工的姓名和年薪(10部门13薪，20部门16薪，其他12薪)</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> emp <span class="keyword">where</span> </div><div class="line"><span class="keyword">select</span> deptno <span class="keyword">from</span> emp</div></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> deptno, <span class="keyword">count</span>(deptno) <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> depton;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>正确版</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno) <span class="keyword">as</span> total <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptno) t1 </div><div class="line"><span class="keyword">inner</span> <span class="keyword">join</span> dept <span class="number">12</span> <span class="keyword">on</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询超过4个人的部门名称和人数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno) <span class="keyword">as</span> total <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptno) <span class="keyword">having</span> <span class="keyword">count</span>(deptno) &gt; <span class="number">4</span> t1</div><div class="line"><span class="keyword">inner</span> <span class="keyword">join</span> dept <span class="number">12</span> <span class="keyword">on</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询所有部门的名称和人数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,nvl(total,<span class="number">0</span>) <span class="keyword">as</span> total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno) <span class="keyword">as</span> total <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptno)  t1</div><div class="line"><span class="keyword">right</span> <span class="keyword">out</span> <span class="keyword">join</span> dept t2 <span class="keyword">on</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>右外连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname,nvl(total,<span class="number">0</span>) <span class="keyword">as</span> total <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno,<span class="keyword">count</span>(deptno)<span class="keyword">as</span> total <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno)t1, dept t2 </div><div class="line"><span class="keyword">where</span> t1.deptno(+)=t2.deptno;</div></pre></td></tr></table></figure>
+</li>
+<li><p>全连接，笛卡尔积</p>
+<blockquote>
+<p>用的比较少</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.*, t2.* <span class="keyword">from</span> dept t1, emp t2;</div></pre></td></tr></table></figure>
+<p>相当左外连接</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.*, t2.* <span class="keyword">from</span> dept t1, emp t2;</div><div class="line">where t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+<p>相当圈外谅解</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.dname, t2.ename <span class="keyword">from</span> dept t1 <span class="keyword">full</span> <span class="keyword">join</span> emp t2 <span class="keyword">on</span> <span class="number">1</span>=<span class="number">1</span>;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>自然连接（用外键连接）</p>
+<blockquote>
+<p>右表越小越好</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> t1.*, t2.* <span class="keyword">from</span> emp t1, dept t2 <span class="keyword">where</span> t1.deptno=t2.deptno;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">natural</span> <span class="keyword">join</span> dept;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询薪水最高的前5名雇员</p>
+<blockquote>
+<p>rownum 伪列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">rownum</span>, ename, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> ename, sal <span class="keyword">from</span> emp </div><div class="line"><span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 <span class="keyword">where</span> <span class="keyword">rownum</span> &lt;= <span class="number">5</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>查询薪水排在第6-10名雇员</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span></div><div class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> <span class="keyword">as</span> rn, t1.* <span class="keyword">from</span></div><div class="line">(<span class="keyword">select</span> ename, sal <span class="keyword">from</span> emp</div><div class="line"><span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 ) t2</div><div class="line"><span class="keyword">where</span> rn <span class="keyword">between</span> <span class="number">6</span> <span class="keyword">and</span> <span class="number">10</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询月薪排名前5的员工姓名和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> <span class="keyword">as</span> rn, ename, sal </div><div class="line"><span class="keyword">from</span> (<span class="keyword">select</span> ename, sal <span class="keyword">from</span> Emp <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 ) t2</div><div class="line"><span class="keyword">where</span> rn &lt;= <span class="number">5</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>查询月薪排名前5的员工姓名和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> <span class="keyword">as</span> rn, ename, sal </div><div class="line"><span class="keyword">from</span> (<span class="keyword">select</span> ename, sal <span class="keyword">from</span> Emp <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) t1 ) t2</div><div class="line"><span class="keyword">where</span> rn <span class="keyword">between</span> <span class="number">4</span> <span class="keyword">and</span> <span class="number">8</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询薪水超过平均薪水的员工的姓名和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal <span class="keyword">from</span> Emp </div><div class="line"><span class="keyword">where</span> sal&gt;(<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> Emp)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>补平均工资的列 </p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, sal,(<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> Empa) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp </div><div class="line"><span class="keyword">where</span> sal&gt;(<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> Emp)</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>查询薪水超过其所在部门平均薪水的员工的姓名，部门编号和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, t1.deptno, sal, avgSal <span class="keyword">from</span> Emp t1 <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t2</div><div class="line"><span class="keyword">on</span> t1.deptno=t2.deptno <span class="keyword">and</span> sal&gt;avgSal</div></pre></td></tr></table></figure>
+<ul>
+<li><p>查询薪水超过其所在部门平均薪水的员工的姓名，部门名称和工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename, dname, sal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> ename, t1.deptno, sal <span class="keyword">from</span> Emp t1 <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t2</div><div class="line"><span class="keyword">on</span> t1.deptno=t2.deptno <span class="keyword">and</span> sal&gt;avgSal) t3 <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">Dept t4 <span class="keyword">on</span> t3.deptno=t4.deptno;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>小表放后，做驱动表</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>查询主管的姓名和职位</p>
+<ul>
+<li>查询主管的编号</li>
+<li><p>去重<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```sql</div><div class="line">select ename, job from Emp </div><div class="line">where empno in (select distinct mgr from Emp where mgr is not null);</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>去重,一般使用exists / no exists 去重<br>o   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="string">'x'</span> <span class="keyword">from</span> Emp</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查询有没有</p>
+</blockquote>
+</li>
+<li>查询主管 更好的写法<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> ename,job <span class="keyword">from</span> Emp t1 </div><div class="line"><span class="keyword">where</span> <span class="keyword">exists</span> (<span class="keyword">select</span> <span class="string">'x'</span> <span class="keyword">from</span> Emp t2 <span class="keyword">where</span> t1.empno = t2.mgr)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>平均薪水最高的部门的名称和平均工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname, avgSal <span class="keyword">from</span> Dept t3</div><div class="line"><span class="keyword">inner</span> <span class="keyword">join</span> </div><div class="line">(<span class="keyword">select</span> t2.deptno, avgSal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t2</div><div class="line"><span class="keyword">where</span> avgSal=</div><div class="line">(<span class="keyword">select</span> <span class="keyword">max</span>(avgSal) <span class="keyword">as</span> maxSal <span class="keyword">from</span> </div><div class="line">(<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t1)) t4</div><div class="line"><span class="keyword">on</span> t4.deptno=t3.deptno;</div></pre></td></tr></table></figure>
+<ul>
+<li>having, 更简单的<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> dname, avgSal <span class="keyword">from</span> </div><div class="line">    (<span class="keyword">select</span> deptno, avgSal <span class="keyword">from</span> </div><div class="line">        (<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal)<span class="keyword">as</span> avgSal </div><div class="line">            <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno</div><div class="line">            <span class="keyword">having</span> <span class="keyword">avg</span>(sal)=(</div><div class="line">                <span class="keyword">select</span> <span class="keyword">max</span>(avgSal) <span class="keyword">as</span> maxSal <span class="keyword">from</span> </div><div class="line">                (<span class="keyword">select</span> deptno, <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgSal <span class="keyword">from</span> Emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t1</div><div class="line">            )) t2 </div><div class="line">        <span class="keyword">inner</span> <span class="keyword">join</span> Dept t3 </div><div class="line">        <span class="keyword">on</span> t2.deptno=t3.deptno</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../../06/vim-personalization/" rel="next" title="vim_personalization">
+                <i class="fa fa-chevron-left"></i> vim_personalization
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="../../12/面试题/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4"
+               alt="蝉鸣Floyd" />
+          <p class="site-author-name" itemprop="name">蝉鸣Floyd</p>
+           
+              <p class="site-description motion-element" itemprop="description">男儿当展凌云志，我命由我不由天。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="../../../../archives/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蝉鸣Floyd</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="../../../../js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="../../../../js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
