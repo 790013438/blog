@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Floyd">
 <meta property="og:description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-04T13:55:28.986Z">
+<meta property="og:updated_time" content="2017-12-07T11:32:22.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim_personalization">
 <meta name="twitter:description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
@@ -342,20 +342,18 @@
 <blockquote>
 <p>个人vimrc</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$HOME</span></div></pre></td></tr></table></figure>
-<p>Another way of finding out exactly which vimrc file you use as your personal file is by executing the following command in the normal mode:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$MYVIMRC</span></div></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
 </li>
-<li><p>gvimrc</p>
-<ul>
-<li>The gvimrc file does not replace the vimrc file, but is simply used for configurations that only apply to the GUI version of Vim.<blockquote>
-<p>用于gui的配置</p>
-</blockquote>
-</li>
 </ul>
-</li>
+<blockquote>
+<p>Another way of finding out exactly which vimrc file you use as your personal file is by executing the following command in the normal mode:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$MYVIMRC</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<pre><code>* gvimrc
+* The gvimrc file does not replace the vimrc file, but is simply used for configurations that only apply to the GUI version of Vim.
+&gt; 用于gui的配置
+</code></pre><ul>
 <li>exrc<ul>
 <li>The exrc file is a configuration file that is only used for backwards compatibility with the old vi /ex editor.<blockquote>
 <p>用的很少，要兼容时才用</p>
@@ -365,21 +363,21 @@
 </ul>
 </li>
 <li><p>The main command for changing the font in Linux is:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
 </li>
 <li><p>For changing the font in Windows, use the following command:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
 </li>
 <li><p>If you are not sure about whether a particular font is available on the computer or not, you can add another font at the end of the command by add a comma between the two fonts.For example:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
 </li>
 <li><p>If the font name contains a whitespace or comma, you will need to escape it with a backslash. For example:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>This command sets the font to Courier New size 12, but only for this session. If you want to have this font every time you edit a file, the same command has to be added to your gvimrc file(without the : in front of set).</p>
 <blockquote>
-<p>如果你想在每次编辑一个文件的时候都使用这个字体，那么你的gvimrc文件中就必须添加相同的命令（没有：在set前面）。</p>
+<p>如果你想在每次编辑一个文件的时候都使用这个字体，那么你的gvimrc文件中就必须添加相同的命令（在set前面没有冒号’:’）。</p>
 <ul>
 <li>In Gvim on Windows, Linux (using GTK+), Mac OS, or Photon, you can get a font selection window shown if you use this command:<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=*</div></pre></td></tr></table></figure>
 </li>

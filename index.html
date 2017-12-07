@@ -263,6 +263,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/12/07/面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蝉鸣Floyd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Floyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2017/12/07/面试题/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T19:26:54+08:00">
+                2017-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="两个线程相加，一个计算1到一万，一计算一万到两万"><a href="#两个线程相加，一个计算1到一万，一计算一万到两万" class="headerlink" title="两个线程相加，一个计算1到一万，一计算一万到两万"></a>两个线程相加，一个计算1到一万，一计算一万到两万</h2><ul>
+<li>Runnable<ul>
+<li>进程和线程有什么区别和联系<ul>
+<li>进程是操作系统分配内存的基本单元</li>
+<li>线程是分配CPU的基本单元</li>
+</ul>
+</li>
+<li>两个进程共享数据-共享内存<ul>
+<li>管道</li>
+<li>套接字</li>
+</ul>
+</li>
+<li>两个线程共享数据<ul>
+<li>共享一个对象</li>
+<li>共享上下文</li>
+<li>用内部类共享外部类的数据</li>
+<li>管道流(PipedInputStream/PipedOutputStream)<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">//atom branch</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger sum = <span class="keyword">new</span> AtomicInteger();</div><div class="line">  <span class="comment">//        private static int sum;</span></div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> begin;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.begin = begin;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; ++i) &#123;</div><div class="line">                sum += i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        t1.start();</div><div class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(<span class="number">10000</span>, <span class="number">20000</span>));</div><div class="line">        t2.start();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            t1.join();</div><div class="line">            t2.join();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        System.out.println(sum);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>使用线程池<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> start;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.start = start;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; ++i) &#123;</div><div class="line">                sum += i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger sum = <span class="keyword">new</span> AtomicInteger();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        service.execute(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        service.execute(<span class="keyword">new</span> AddThread(<span class="number">10001</span>, <span class="number">20000</span>));</div><div class="line">        Service.shutdown();</div><div class="line">        <span class="keyword">while</span> (!service.isTerninated()) &#123; &#125;</div><div class="line">        System.out.println(sum);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li><p>使用Callable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> Integer sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> begin;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.begin = begin;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; ++i) &#123;</div><div class="line">                sum.addAndGet(i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> sum;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Future&lt;Integer&gt; f1 = service.submit(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        Future&lt;Integer&gt; f2 = service.submit(<span class="keyword">new</span> AddThread(<span class="number">1001</span>, <span class="number">20000</span>));</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">int</span> num1 = f1.get();</div><div class="line">            <span class="keyword">int</span> num2 = f2.get();</div><div class="line">            System.out.println(num1 + num2);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>java7 fork join</p>
+<blockquote>
+<p>排序，没有相关性的东西<br>Collections.sort –&gt; java7 之前 Double pivot quick sort, Java 7+ 后TimSort<br>JMM – Java memory model</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/11/15/json/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -335,163 +491,6 @@
         
           
             <h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//得到被调用者</span></div><div class="line">    <span class="keyword">var</span> fn = <span class="built_in">arguments</span>.callee;</div><div class="line">    <span class="comment">//这种做法称为Ajax轮询 服务器压力大</span></div><div class="line">    <span class="comment">//</span></div><div class="line">    $.getJSON(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">        option.series[<span class="number">0</span>].data = json;</div><div class="line">        myChart.setOption(option);</div><div class="line">        <span class="keyword">var</span> mills = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">2001</span> + <span class="number">4000</span>);</div><div class="line">        <span class="built_in">window</span>.setTimeout(fn, mills);</div><div class="line">    &#125;);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/11/12/面试题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="蝉鸣Floyd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Floyd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="2017/11/12/面试题/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T13:10:42+08:00">
-                2017-11-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="两个线程相加，一个计算1到一万，一计算一万到两万"><a href="#两个线程相加，一个计算1到一万，一计算一万到两万" class="headerlink" title="两个线程相加，一个计算1到一万，一计算一万到两万"></a>两个线程相加，一个计算1到一万，一计算一万到两万</h2><ul>
-<li><p>Runnable</p>
-<ul>
-<li>进程和线程有什么区别和联系<ul>
-<li>进程是操作系统分配内存的基本单元</li>
-<li>线程是分配CPU的基本单元</li>
-</ul>
-</li>
-<li>两个进程共享数据-共享内存<ul>
-<li>管道</li>
-<li>套接字</li>
-</ul>
-</li>
-<li><p>两个线程共享数据</p>
-<ul>
-<li>共享一个对象</li>
-<li>共享上下文</li>
-<li>用内部类共享外部类的数据</li>
-<li>管道流(PipedInputStream/PipedOutputStream)<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">//atom branch</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger sum = <span class="keyword">new</span> AtomicInteger();</div><div class="line">  <span class="comment">//        private static int sum;</span></div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> begin;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.begin = begin;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; ++i) &#123;</div><div class="line">                sum += i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        t1.start();</div><div class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(<span class="number">10000</span>, <span class="number">20000</span>));</div><div class="line">        t2.start();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            t1.join();</div><div class="line">            t2.join();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        System.out.println(sum);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>使用线程池</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> start;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.start = start;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; ++i) &#123;</div><div class="line">                sum += i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger sum = <span class="keyword">new</span> AtomicInteger();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        service.execute(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        service.execute(<span class="keyword">new</span> AddThread(<span class="number">10001</span>, <span class="number">20000</span>));</div><div class="line">        Service.shutdown();</div><div class="line">        <span class="keyword">while</span> (!service.isTerninated()) &#123; &#125;</div><div class="line">        System.out.println(sum);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>使用Callable</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> Integer sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> begin;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> end;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.begin = begin;</div><div class="line">            <span class="keyword">this</span>.end = end;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt;= end; ++i) &#123;</div><div class="line">                sum.addAndGet(i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> sum;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Future&lt;Integer&gt; f1 = service.submit(<span class="keyword">new</span> AddThread(<span class="number">1</span>, <span class="number">10000</span>));</div><div class="line">        Future&lt;Integer&gt; f2 = service.submit(<span class="keyword">new</span> AddThread(<span class="number">1001</span>, <span class="number">20000</span>));</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">int</span> num1 = f1.get();</div><div class="line">            <span class="keyword">int</span> num2 = f2.get();</div><div class="line">            System.out.println(num1 + num2);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>java7 fork join</p>
-<blockquote>
-<p>排序，没有相关性的东西<br>Collections.sort –&gt; java7 之前 Double pivot quick sort, Java 7+ 后TimSort<br>JMM – Java memory model</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
 
           
         
@@ -847,20 +846,18 @@
 <blockquote>
 <p>个人vimrc</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$HOME</span></div></pre></td></tr></table></figure>
-<p>Another way of finding out exactly which vimrc file you use as your personal file is by executing the following command in the normal mode:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$MYVIMRC</span></div></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
 </li>
-<li><p>gvimrc</p>
-<ul>
-<li>The gvimrc file does not replace the vimrc file, but is simply used for configurations that only apply to the GUI version of Vim.<blockquote>
-<p>用于gui的配置</p>
-</blockquote>
-</li>
 </ul>
-</li>
+<blockquote>
+<p>Another way of finding out exactly which vimrc file you use as your personal file is by executing the following command in the normal mode:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$MYVIMRC</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<pre><code>* gvimrc
+* The gvimrc file does not replace the vimrc file, but is simply used for configurations that only apply to the GUI version of Vim.
+&gt; 用于gui的配置
+</code></pre><ul>
 <li>exrc<ul>
 <li>The exrc file is a configuration file that is only used for backwards compatibility with the old vi /ex editor.<blockquote>
 <p>用的很少，要兼容时才用</p>
@@ -870,21 +867,21 @@
 </ul>
 </li>
 <li><p>The main command for changing the font in Linux is:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
 </li>
 <li><p>For changing the font in Windows, use the following command:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
 </li>
 <li><p>If you are not sure about whether a particular font is available on the computer or not, you can add another font at the end of the command by add a comma between the two fonts.For example:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
 </li>
 <li><p>If the font name contains a whitespace or comma, you will need to escape it with a backslash. For example:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>This command sets the font to Courier New size 12, but only for this session. If you want to have this font every time you edit a file, the same command has to be added to your gvimrc file(without the : in front of set).</p>
 <blockquote>
-<p>如果你想在每次编辑一个文件的时候都使用这个字体，那么你的gvimrc文件中就必须添加相同的命令（没有：在set前面）。</p>
+<p>如果你想在每次编辑一个文件的时候都使用这个字体，那么你的gvimrc文件中就必须添加相同的命令（在set前面没有冒号’:’）。</p>
 <ul>
 <li>In Gvim on Windows, Linux (using GTK+), Mac OS, or Photon, you can get a font selection window shown if you use this command:<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=*</div></pre></td></tr></table></figure>
 </li>
