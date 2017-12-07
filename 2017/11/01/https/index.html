@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="创建密钥1keytool -genkey -alias tomcat -keyalg RSA 修改tomcat配置文件12345&amp;lt;Connector port=&quot;8443&quot; protocol=&quot;org.apache.coyote.http11.Http11NioProtocol&quot; maxThreads=&quot;150&quot; SSLEnabled=&quot;true&quot; scheme=&quot;https&quot; secure">
+<meta name="description" content="https参考配置，不一定正确">
 <meta property="og:type" content="article">
 <meta property="og:title" content="https">
 <meta property="og:url" content="https://790013438.github.io/blog/2017/11/01/https/index.html">
 <meta property="og:site_name" content="Floyd">
-<meta property="og:description" content="创建密钥1keytool -genkey -alias tomcat -keyalg RSA 修改tomcat配置文件12345&amp;lt;Connector port=&quot;8443&quot; protocol=&quot;org.apache.coyote.http11.Http11NioProtocol&quot; maxThreads=&quot;150&quot; SSLEnabled=&quot;true&quot; scheme=&quot;https&quot; secure">
+<meta property="og:description" content="https参考配置，不一定正确">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-01T08:30:00.561Z">
+<meta property="og:updated_time" content="2017-12-07T11:49:22.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https">
-<meta name="twitter:description" content="创建密钥1keytool -genkey -alias tomcat -keyalg RSA 修改tomcat配置文件12345&amp;lt;Connector port=&quot;8443&quot; protocol=&quot;org.apache.coyote.http11.Http11NioProtocol&quot; maxThreads=&quot;150&quot; SSLEnabled=&quot;true&quot; scheme=&quot;https&quot; secure">
+<meta name="twitter:description" content="https参考配置，不一定正确">
 
 
 
@@ -329,7 +329,9 @@
       
 
       
-        <h2 id="创建密钥"><a href="#创建密钥" class="headerlink" title="创建密钥"></a>创建密钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -<span class="built_in">alias</span> tomcat -keyalg RSA</div></pre></td></tr></table></figure>
+        <p>https参考配置，不一定正确</p>
+<a id="more"></a>
+<h2 id="创建密钥"><a href="#创建密钥" class="headerlink" title="创建密钥"></a>创建密钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -<span class="built_in">alias</span> tomcat -keyalg RSA</div></pre></td></tr></table></figure>
 <h2 id="修改tomcat配置文件"><a href="#修改tomcat配置文件" class="headerlink" title="修改tomcat配置文件"></a>修改tomcat配置文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8443"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span> <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span> <span class="attr">scheme</span>=<span class="string">"https"</span> <span class="attr">secure</span>=<span class="string">"true"</span> <span class="attr">clientAuth</span>=<span class="string">"false"</span> <span class="attr">sslProtocol</span>=<span class="string">"TLS"</span> <span class="attr">keystoreFile</span>=<span class="string">"c:/users/79001/.keystore"</span> <span class="attr">keystorePass</span>=<span class="string">"37934bit"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">SSLHostConfig</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Certificate</span> <span class="attr">certificateKeystoreFile</span>=<span class="string">"conf/localhost-rsa.jks"</span> <span class="attr">type</span>=<span class="string">"RSA"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">SSLHostConfig</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Connector</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="配置web-xml"><a href="#配置web-xml" class="headerlink" title="配置web.xml"></a>配置web.xml</h2>
       
@@ -355,8 +357,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../../../10/18/雨雨使用手册/" rel="next" title="雨雨使用手册">
-                <i class="fa fa-chevron-left"></i> 雨雨使用手册
+              <a href="../../../10/18/json/" rel="next" title="JavaScript一些些片段">
+                <i class="fa fa-chevron-left"></i> JavaScript一些些片段
               </a>
             
           </div>
@@ -365,8 +367,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="../../06/tutorial/" rel="prev" title="tutorial">
-                tutorial <i class="fa fa-chevron-right"></i>
+              <a href="../../06/vim-personalization/" rel="prev" title="vim_personalization">
+                vim_personalization <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -444,7 +446,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="../../../../archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -457,7 +459,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
