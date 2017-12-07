@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
+<meta name="description" content="javascript123456789101112(function()&amp;#123;    //得到被调用者    var fn = arguments.callee;    //这种做法称为Ajax轮询 服务器压力大    //    $.getJSON(&quot;data&quot;, function(json)&amp;#123;        option.series[0].data = json;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim_personalization">
-<meta property="og:url" content="https://790013438.github.io/blog/2017/11/06/vim-personalization/index.html">
+<meta property="og:title" content="Floyd">
+<meta property="og:url" content="https://790013438.github.io/blog/2017/11/15/json/index.html">
 <meta property="og:site_name" content="Floyd">
-<meta property="og:description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
+<meta property="og:description" content="javascript123456789101112(function()&amp;#123;    //得到被调用者    var fn = arguments.callee;    //这种做法称为Ajax轮询 服务器压力大    //    $.getJSON(&quot;data&quot;, function(json)&amp;#123;        option.series[0].data = json;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-04T13:55:28.986Z">
+<meta property="og:updated_time" content="2017-11-15T08:19:41.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vim_personalization">
-<meta name="twitter:description" content="configuration files三个配置文件 vimrc  The global vimrc file is placed in the folder where all of your Vim system files are installed.  全局vimrc 1:echo $VIM   You can find out what Vim considers as the home">
+<meta name="twitter:title" content="Floyd">
+<meta name="twitter:description" content="javascript123456789101112(function()&amp;#123;    //得到被调用者    var fn = arguments.callee;    //这种做法称为Ajax轮询 服务器压力大    //    $.getJSON(&quot;data&quot;, function(json)&amp;#123;        option.series[0].data = json;">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://790013438.github.io/blog/2017/11/06/vim-personalization/"/>
+  <link rel="canonical" href="https://790013438.github.io/blog/2017/11/15/json/"/>
 
 
 
 
 
-  <title>vim_personalization | Floyd</title>
+  <title> | Floyd</title>
   
 
 
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vim_personalization</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T11:03:38+08:00">
-                2017-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T16:19:41+08:00">
+                2017-11-15
               </time>
             
 
@@ -329,75 +329,8 @@
       
 
       
-        <h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><h3 id="三个配置文件"><a href="#三个配置文件" class="headerlink" title="三个配置文件"></a>三个配置文件</h3><ul>
-<li><p>vimrc</p>
-<ul>
-<li><p>The global vimrc file is placed in the folder where all of your Vim system files are installed.</p>
-<blockquote>
-<p>全局vimrc</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$VIM</span></div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>You can find out what Vim considers as the home directory on your system by executing the following command in normal mode:</p>
-<blockquote>
-<p>个人vimrc</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$HOME</span></div></pre></td></tr></table></figure>
-<p>Another way of finding out exactly which vimrc file you use as your personal file is by executing the following command in the normal mode:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">echo</span> <span class="variable">$MYVIMRC</span></div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>gvimrc</p>
-<ul>
-<li>The gvimrc file does not replace the vimrc file, but is simply used for configurations that only apply to the GUI version of Vim.<blockquote>
-<p>用于gui的配置</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>exrc<ul>
-<li>The exrc file is a configuration file that is only used for backwards compatibility with the old vi /ex editor.<blockquote>
-<p>用的很少，要兼容时才用</p>
-<h3 id="Changing-the-fonts"><a href="#Changing-the-fonts" class="headerlink" title="Changing the fonts"></a>Changing the fonts</h3><p>字体<br>一般来说，由于Vim的字体是由终端决定的，因此不太可能更改。然而，在Gvim中，你可以随心所欲地改变字体。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>The main command for changing the font in Linux is:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ 14</div></pre></td></tr></table></figure>
-</li>
-<li><p>For changing the font in Windows, use the following command:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier:14</div></pre></td></tr></table></figure>
-</li>
-<li><p>If you are not sure about whether a particular font is available on the computer or not, you can add another font at the end of the command by add a comma between the two fonts.For example:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12, Arial\ 10</div></pre></td></tr></table></figure>
-</li>
-<li><p>If the font name contains a whitespace or comma, you will need to escape it with a backslash. For example:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=Courier\ New\ 12</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>This command sets the font to Courier New size 12, but only for this session. If you want to have this font every time you edit a file, the same command has to be added to your gvimrc file(without the : in front of set).</p>
-<blockquote>
-<p>如果你想在每次编辑一个文件的时候都使用这个字体，那么你的gvimrc文件中就必须添加相同的命令（没有：在set前面）。</p>
-<ul>
-<li>In Gvim on Windows, Linux (using GTK+), Mac OS, or Photon, you can get a font selection window shown if you use this command:<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">set</span> guifont=*</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li>If you tend to use a lot of different fonts depending on what you are currently working with (code, text, logfiles, and so on.),you can set up Vim to use the corrent font according to the file type.<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">autocmd BufEnter *.txt <span class="built_in">set</span> guifont=Arial\ 12</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Changing-color-scheme"><a href="#Changing-color-scheme" class="headerlink" title="Changing color scheme"></a>Changing color scheme</h3><p>输入下面的命令，加空格，加tab<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:colorscheme</div></pre></td></tr></table></figure></p>
-<h3 id="Personal-highlighting"><a href="#Personal-highlighting" class="headerlink" title="Personal highlighting"></a>Personal highlighting</h3><p>Matching is done with the following command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:match Group /pattern/</div></pre></td></tr></table></figure></p>
-<p>The command has two arguments. The first one is the name of the color group that you will use in the highlight. To see a complete list of color groups, use the command;</p>
-<blockquote>
-<p>查看颜色组的完整列表，请使用该命令;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:so <span class="variable">$VIMRUNTIME</span>/syntax/hitest.vim</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>A simple example of the match command in use would be:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:match ErrorMsg /^Error/</div></pre></td></tr></table></figure></p>
-<p>This command looks for the word Error (marked with a ^)at the begining of all lines. If a match if found, it will be marked with the colors in the ErrorMsg color group.</p>
-<h4 id="Mark-color-characters-after-a-certain-column"><a href="#Mark-color-characters-after-a-certain-column" class="headerlink" title="Mark color characters after a certain column"></a>Mark color characters after a certain column</h4>
+        <h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//得到被调用者</span></div><div class="line">    <span class="keyword">var</span> fn = <span class="built_in">arguments</span>.callee;</div><div class="line">    <span class="comment">//这种做法称为Ajax轮询 服务器压力大</span></div><div class="line">    <span class="comment">//</span></div><div class="line">    $.getJSON(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">        option.series[<span class="number">0</span>].data = json;</div><div class="line">        myChart.setOption(option);</div><div class="line">        <span class="keyword">var</span> mills = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">2001</span> + <span class="number">4000</span>);</div><div class="line">        <span class="built_in">window</span>.setTimeout(fn, mills);</div><div class="line">    &#125;);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -421,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../tutorial/" rel="next" title="tutorial">
-                <i class="fa fa-chevron-left"></i> tutorial
+              <a href="../../12/面试题/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -430,10 +363,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="../../07/oracle查询/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -558,7 +487,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configuration-files"><span class="nav-number">1.</span> <span class="nav-text">configuration files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个配置文件"><span class="nav-number">1.1.</span> <span class="nav-text">三个配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Changing-the-fonts"><span class="nav-number">1.2.</span> <span class="nav-text">Changing the fonts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Changing-color-scheme"><span class="nav-number">1.3.</span> <span class="nav-text">Changing color scheme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Personal-highlighting"><span class="nav-number">1.4.</span> <span class="nav-text">Personal highlighting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mark-color-characters-after-a-certain-column"><span class="nav-number">1.4.1.</span> <span class="nav-text">Mark color characters after a certain column</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">1.</span> <span class="nav-text">javascript</span></a></li></ol></div>
             
 
           </div>
