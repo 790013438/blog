@@ -263,6 +263,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/12/29/HashMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蝉鸣Floyd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21995328?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Floyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2017/12/29/HashMap/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T12:04:38+08:00">
+                2017-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>HashMap<br>HashMap 实现了Map接口，Map数据结构存储key/value(键值对),通过key(键)，可以找到一个value(值)。<br>比如，存储员工记录表，其中key(键)是员工标识，value(值)是员工对象。<br>HashMap会计算key的hash值(散列值)，通过hash值找value。</p>
+</li>
+<li><p>equals<br>Ojbect类中的equals方法测试一个对象是否被认为与另一个对象相等。<br>在Object类中实现的equals方法比较两个对象引用是否相同。<br>实现基于对象状态的相等性时，如果两个对象成员变量的值相同则认为是相等。<br>Java语言规范要求equals方法具有以下属性：1.它是自反的：对于任何非空引用x，x.equals(x)应该返回true。 2.它是对称的：对于任何引用x和y，当且仅当y.equals(x)返回true时，x.equals(y)才返回true。 3.它是可传递的：对于任何引用x，y和z，如果x.equals(y)返回true并且y.equals(z)返回true，则x.equals(z)应该返回true。 4.一致性：如果x和y引用的对象没有改变，则重复调用x.equals(y)将返回相同的值。 5.对于任何非空引用x，x.equals(null)应该返回false。<br>equals方法有两种截然不同的方案：如果子类有自己的想等概念，那么对称性要求你使用getClass测试。如果相等概念在父类中是固定的，那么你可以使用instanceof检测，并允许不同子类的对象相等(比如，AbstractSet类有两个具体的子类，TreeSet和HashSet，它们使用不同的算法来定位集合元素。但是能够比较)。<br>如果有数组类型的字段，则可以使用静态Arrays.equals方法来比较两个数组元素是否相等。</p>
+</li>
+<li><p>hashCode<br>哈希码是从对象派生的整数。如果x和有是两个不同的对象，则x.hashCode()和y.hashCode()的相同的概率应该是很小的。<br>hashCode方法在Object类中定义。因此，每个对象都有一个默认的hash code(散列码)。该哈希码是从对象的内存地址派生的。<br>如果重新定义equals方法，则还需要重新定义用户可能插入到哈希表中的对象的hashCode方法。hashCode方法应该返回一个整数（可以是负数）。结合成员变量的哈希码，以便不同对象的哈希码尽可能广泛分散。例如，以下是Employee类的hashCode方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> Objects.hash(name, salary, hireDay);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如有由数组类型的字段，则可以使用静态Arrays.hashCode方法来计算由数组元素的哈希码组成的哈希代码。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://790013438.github.io/blog2017/12/07/oracle查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1105,7 +1234,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
